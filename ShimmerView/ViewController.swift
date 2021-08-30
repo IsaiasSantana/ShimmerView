@@ -5,9 +5,12 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setup()
+    }
+
+    private func setup() {
         title = "Shimmer View"
-        
+
         view.addSubview(contentView)
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -56,7 +59,6 @@ final class ExampleView: UIView, UITableViewDelegate, UITableViewDataSource {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
         setupContentView()
-        setupObserver()
     }
 
     private func setupContentView() {
@@ -106,17 +108,6 @@ final class ExampleView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
-    }
-
-    private func setupObserver() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(willEnterForeground),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
-    }
-
-    @objc private func willEnterForeground() {
-        
     }
 }
 
