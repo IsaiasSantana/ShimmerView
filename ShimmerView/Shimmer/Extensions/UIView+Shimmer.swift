@@ -16,7 +16,6 @@ extension UIView {
 
     func removeShimmer() {
         for subview in subviews where subview is ShimmerViewContainer {
-            subview.removeShimmer()
             subview.removeFromSuperview()
         }
     }
